@@ -5,35 +5,6 @@ All models run on the **Hugging Face Inference API** — completely free, no GPU
 
 ---
 
-## 🗂 Project Structure
-
-```
-ai-studio/
-├── backend/
-│   ├── main.py              # FastAPI app — all 8 AI endpoints
-│   ├── requirements.txt     # Python dependencies
-│   └── .env.example         # Copy to .env and add your HF key
-└── frontend/
-    ├── public/
-    │   └── index.html
-    ├── src/
-    │   ├── App.jsx           # Shell with sidebar navigation
-    │   ├── App.css           # Dark industrial design system
-    │   ├── api.js            # Fetch helpers
-    │   └── pages/
-    │       ├── SentimentPage.jsx
-    │       ├── GenerationPage.jsx
-    │       ├── ImagePage.jsx
-    │       ├── SpeechPage.jsx
-    │       ├── SummarizePage.jsx
-    │       ├── NERPage.jsx
-    │       ├── TranslatePage.jsx
-    │       └── QAPage.jsx
-    └── package.json
-```
-
----
-
 ## Quick Start
 
 ### Step 1 — Get a Free HuggingFace API Key
@@ -64,6 +35,7 @@ cp .env.example .env
 
 # Start the server
 HF_API_KEY=hf_your_token uvicorn main:app --reload --port 8000
+
 # OR on Windows PowerShell:
 # $env:HF_API_KEY="hf_your_token"; uvicorn main:app --reload --port 8000
 ```
@@ -92,16 +64,16 @@ Frontend runs at: **http://localhost:3000**
 
 ## Features — 8 AI Models
 
-| # | Feature | Model | Input | Output |
-|---|---------|-------|-------|--------|
-| 1 | **Sentiment Analysis** | distilbert-base-uncased-finetuned-sst-2-english | Text | Positive/Negative + confidence |
-| 2 | **Text Generation** | mistralai/Mistral-7B-Instruct-v0.1 | Prompt | Generated continuation |
-| 3 | **Image Classification** | google/vit-base-patch16-224 | JPG/PNG image | Top-5 labels + confidence |
-| 4 | **Speech Recognition** | openai/whisper-large-v2 | MP3/WAV audio | Full transcript |
-| 5 | **Text Summarization** | facebook/bart-large-cnn | Long text | Condensed summary |
-| 6 | **Named Entity Recognition** | dslim/bert-base-NER | Text | People, orgs, places, misc |
-| 7 | **Translation (EN→FR)** | Helsinki-NLP/opus-mt-en-fr | English text | French translation |
-| 8 | **Question Answering** | deepset/roberta-base-squad2 | Context + Question | Extracted answer |
+| # | Feature | Input | Output |
+|---|---------|-------|--------|
+| 1 | **Sentiment Analysis** | Text | Positive/Negative + confidence |
+| 2 | **Text Generation** | Prompt | Generated continuation |
+| 3 | **Image Classification** | JPG/PNG image | Top-5 labels + confidence |
+| 4 | **Speech Recognition** | MP3/WAV audio | Full transcript |
+| 5 | **Text Summarization** | Long text | Condensed summary |
+| 6 | **Named Entity Recognition** | Text | People, orgs, places, misc |
+| 7 | **Translation (EN→FR)** | English text | French translation |
+| 8 | **Question Answering** | Context + Question | Extracted answer |
 
 ---
 
@@ -165,7 +137,6 @@ POST /qa            → { question, context }             → { answer, confiden
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React 18, Vanilla CSS (no UI library), Google Fonts
+- **Frontend**: React 18, Vanilla CSS, Google Fonts
 - **Backend**: FastAPI, httpx (async HTTP), python-multipart
 - **AI Platform**: Hugging Face Inference API (free tier)
-- **Models**: DistilBERT, Mistral-7B, ViT, Whisper, BART, BERT-NER, MarianMT, RoBERTa
