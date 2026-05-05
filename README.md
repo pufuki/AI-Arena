@@ -1,13 +1,13 @@
-# AI Studio — 8 Models, No GPU Required
+# AI Studio - 8 Models, No GPU Required
 
 A full-stack AI web application with **React** frontend and **FastAPI** backend.  
-All models run on the **Hugging Face Inference API** — completely free, no GPU, no local model downloads.
+All models run on the **Hugging Face Inference API** - completely free, no GPU, no local model downloads.
 
 ---
 
 ## Quick Start
 
-### Step 1 — Get a Free HuggingFace API Key
+### Step 1 - Get a Free HuggingFace API Key
 
 1. Go to → https://huggingface.co/join (free account)
 2. Go to → https://huggingface.co/settings/tokens
@@ -16,7 +16,7 @@ All models run on the **Hugging Face Inference API** — completely free, no GPU
 
 ---
 
-### Step 2 — Set Up the Backend
+### Step 2 - Set Up the Backend
 
 ```bash
 # Go into backend folder
@@ -45,7 +45,7 @@ Docs available at: **http://localhost:8000/docs** (Swagger UI)
 
 ---
 
-### Step 3 — Set Up the Frontend
+### Step 3 - Set Up the Frontend
 
 ```bash
 # In a new terminal
@@ -62,7 +62,7 @@ Frontend runs at: **http://localhost:3000**
 
 ---
 
-## Features — 8 AI Models
+## Features - 8 AI Models
 
 | # | Feature | Input | Output |
 |---|---------|-------|--------|
