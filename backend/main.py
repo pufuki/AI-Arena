@@ -27,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )"""
 
-# ─── Config ──────────────────────────────────────────────────────────────────
+# Config
 HF_API_KEY = os.getenv("HF_API_KEY", "")   # set in .env or export HF_API_KEY=hf_...
 HF_BASE = "https://router.huggingface.co/hf-inference/models"
 
@@ -62,23 +62,6 @@ async def call_hf(model_key: str, payload: dict, timeout: int = 60):
         raise HTTPException(resp.status_code, f"HF API error: {resp.text}")
     return resp.json()
 
-
-'''sync def call_hf_binary(model_key: str, data: bytes, content_type: str = "image/jpeg", timeout: int = 90):
-    """POST raw bytes (audio / image) to HF Inference API."""
-    url = f"{HF_BASE}/{MODELS[model_key]}"
-    headers = {
-        "Authorization": f"Bearer {HF_API_KEY}",
-        "Content-Type": content_type,
-        "Accept": "application/json",
-    }
-    async with httpx.AsyncClient(timeout=timeout) as client:
-        resp = await client.post(url, headers=headers, content=data)
-    if resp.status_code == 503:
-        raise HTTPException(503, "Model is loading on HF servers, retry in ~20s")
-    if resp.status_code != 200:
-        raise HTTPException(resp.status_code, f"HF API error: {resp.text}")
-    return resp.json()'''
-
 async def call_hf_binary(model_key: str, data: bytes, content_type: str = "image/jpeg", timeout: int = 90):
     """POST raw bytes (audio / image) to HF Inference API."""
     url = f"{HF_BASE}/{MODELS[model_key]}"
@@ -86,7 +69,7 @@ async def call_hf_binary(model_key: str, data: bytes, content_type: str = "image
     async with httpx.AsyncClient(timeout=timeout) as client:
         resp = await client.post(url, headers=headers, content=data)
 
-# ─── Request / Response Models ────────────────────────────────────────────────
+# Request / Response Models
 
 class TextRequest(BaseModel):
     text: str
@@ -106,10 +89,8 @@ class QARequest(BaseModel):
 
 class TranslateRequest(BaseModel):
     text: str
-
-
-# ─── Routes ───────────────────────────────────────────────────────────────────
-
+    
+# routes
 @app.get("/")
 def root():
     return {"message": "AI Studio API is running 🚀"}
