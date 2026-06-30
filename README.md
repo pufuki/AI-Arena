@@ -19,21 +19,15 @@ All models run on the **Hugging Face Inference API** - completely free, no GPU, 
 ### Step 2 - Set Up the Backend
 
 ```bash
-# Go into backend folder
 cd ai-studio/backend
 
-# Create a virtual environment (recommended)
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 
-# Install dependencies
 pip install -r requirements.txt
 
-# Set your API key
 cp .env.example .env
-# Edit .env and replace hf_xxxx... with your actual token
 
-# Start the server
 HF_API_KEY=hf_your_token uvicorn main:app --reload --port 8000
 
 # OR on Windows PowerShell:
@@ -51,10 +45,8 @@ Docs available at: **http://localhost:8000/docs** (Swagger UI)
 # In a new terminal
 cd ai-studio/frontend
 
-# Install Node packages
 npm install
 
-# Start React app
 npm start
 ```
 
@@ -77,7 +69,7 @@ Frontend runs at: **http://localhost:3000**
 
 ---
 
-## 🏗 System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -135,7 +127,7 @@ POST /qa            → { question, context }             → { answer, confiden
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Frontend**: React 18, Vanilla CSS, Google Fonts
 - **Backend**: FastAPI, httpx (async HTTP), python-multipart
